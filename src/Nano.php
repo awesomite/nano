@@ -20,9 +20,9 @@ use Symfony\Component\HttpFoundation\Response;
 class Nano implements AppInterface
 {
     use ArgumentResolverTrait;
+    use ContainerTrait;
     use DataTransormerTrait;
     use ErrorHandlingTrait;
-    use ContainerTrait;
     use HttpExceptionsTrait;
     use RoutingTrait;
 
@@ -51,7 +51,9 @@ class Nano implements AppInterface
 
         $result = $this->transformToResponse($data);
         if ($autoFlush) {
+            // @codeCoverageIgnoreStart
             $result->send();
+            // @codeCoverageIgnoreEnd
         }
 
         return $result;
