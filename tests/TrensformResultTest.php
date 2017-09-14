@@ -16,6 +16,6 @@ class TrensformResultTest extends TestBase
             return [1, 2, 3];
         });
         $result = $app->run(Request::create('http://home.local/json'), false);
-        $this->assertSame('application/json', $result->headers->get('content-type'));
+        $this->assertContains('application/json', $result->headers->get('content-type'));
     }
 }
