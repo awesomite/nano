@@ -22,4 +22,3 @@ class ErrorHandlingTest extends TestBase
         restore_error_handler();
     }
 }
-
