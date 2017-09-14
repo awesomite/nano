@@ -1,5 +1,8 @@
 # Nano http framework
 
+[![Coverage Status](https://coveralls.io/repos/github/awesomite/nano/badge.svg?branch=master)](https://coveralls.io/github/awesomite/nano?branch=master)
+[![Build Status](https://travis-ci.org/awesomite/nano.svg?branch=master)](https://travis-ci.org/awesomite/nano)
+
 ```php
 <?php
 
