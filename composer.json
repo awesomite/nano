@@ -1,0 +1,30 @@
+{
+    "name": "awesomite/nano",
+    "description": "Nano http framework",
+    "require": {
+        "symfony/http-foundation": "^3.3",
+        "awesomite/chariot": "^0.3.0",
+        "psr/container": "^1.0",
+        "awesomite/error-dumper": "^0.13.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bkrukowski",
+            "email": "bartlomiej@krukowski.me"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Awesomite\\Nano\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Awesomite\\Nano\\": "tests/"
+        }
+    }
+}
