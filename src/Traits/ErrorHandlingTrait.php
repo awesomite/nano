@@ -26,13 +26,14 @@ trait ErrorHandlingTrait
         return $this;
     }
 
-    public function enableErrorHandling()
+    public function enableErrorHandling(bool $exitOnError = true)
     {
         if (is_null($this->errorHandler)) {
             $this->errorHandler = (new ErrorHandler())
                 ->pushListener(new ListenerClosure(function ($exception) {
                     $this->errorHandle($exception);
                 }))
+                ->exitAfterTrigger($exitOnError)
                 ->register();
         }
 
