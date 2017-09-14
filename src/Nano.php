@@ -13,6 +13,7 @@ use Awesomite\Nano\Traits\DataTransormerTrait;
 use Awesomite\Nano\Traits\ErrorHandlingTrait;
 use Awesomite\Nano\Traits\HttpExceptionsTrait;
 use Awesomite\Nano\Traits\RoutingTrait;
+use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -25,7 +26,7 @@ class Nano implements AppInterface
     use HttpExceptionsTrait;
     use RoutingTrait;
 
-    public function __construct(PatternsInterface $patterns = null, Container $container = null)
+    public function __construct(PatternsInterface $patterns = null, ContainerInterface $container = null)
     {
         $this->router = new PatternRouter($patterns ?? Patterns::createDefault());
         $this->container = $container ?? new Container();

@@ -2,7 +2,7 @@
 
 namespace Awesomite\Nano\Traits;
 
-use Awesomite\Nano\Container\Container;
+use Psr\Container\ContainerInterface;
 
 /**
  * @internal
@@ -11,7 +11,7 @@ trait ContainerTrait
 {
     private $container;
 
-    public function getContainer(): Container
+    public function getContainer(): ContainerInterface
     {
         return $this->container;
     }
