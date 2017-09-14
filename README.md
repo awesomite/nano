@@ -28,7 +28,7 @@ $app->get('greetings', '/hello-{{ name }}', function (string $name) {
 $app->get('showItem', '/category-{{ categoryName }}/item-{{ itemId :int }}', function (int $itemId, string $category) {
     return sprintf('Item %d from category %s', $itemId, $category);
 });
-$app->get('mysqlPing', '/mysql', function (MyMysqlConnection $mysql) { // $mysql comes from container, see line 10
+$app->get('mysqlPing', '/mysql', function (MyMysqlConnection $mysql) { // $mysql comes from container
     $mysql->execute('MY QUERY...');
     return 'OK';
 });
