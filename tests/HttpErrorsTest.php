@@ -11,6 +11,22 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class HttpErrorsTest extends TestBase
 {
+    public function testDefault404()
+    {
+        $app = new Nano();
+        $response = $app->run(Request::create('https://home.local/'), false);
+        $this->assertSame(Response::HTTP_NOT_FOUND, $response->getStatusCode());
+    }
+
+    public function testDefault405()
+    {
+        $app = new Nano();
+        $app->get('home', '/', function () {
+        });
+        $response = $app->run(Request::create('https://home.local/', 'POST'), false);
+        $this->assertSame(Response::HTTP_METHOD_NOT_ALLOWED, $response->getStatusCode());
+    }
+
     public function test404()
     {
         $app = new Nano();
