@@ -11,19 +11,15 @@ use Awesomite\Nano\Container\Container;
 use Awesomite\Nano\Nano;
 
 /*
- * Prepare container
- * Container MUST implement Psr\Container\ContainerInterface
- * 
- * @see https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md
- */
-$container = new Container();
-$container->set('mysql', new MyMysqlConnection());
-
-/*
  * Creating nano app
- * Both arguments are optional
  */
-$app = new Nano(null, $container);
+$app = new Nano();
+
+/**
+ * Filling the container
+ */
+$app->getContainer()
+    ->set('mysql', new MyMysqlConnection());
 
 /*
  * Enable error handler

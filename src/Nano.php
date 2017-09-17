@@ -28,10 +28,10 @@ class Nano implements AppInterface
     use PathReaderTrait;
     use RoutingTrait;
 
-    public function __construct(PatternsInterface $patterns = null, ContainerInterface $container = null)
+    public function __construct(PatternsInterface $patterns = null)
     {
         $this->router = new PatternRouter($patterns ?? Patterns::createDefault());
-        $this->container = $container ?? new Container();
+        $this->container = new Container();
     }
 
     public function run(Request $request = null, bool $autoFlush = true): Response
