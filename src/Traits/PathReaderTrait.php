@@ -42,8 +42,9 @@ trait PathReaderTrait
             $path = call_user_func($this->pathReaderCallback, $request);
             if (!is_string($path)) {
                 throw new \DomainException(sprintf(
-                    'Callback defined in %s::setPathReader must return string',
-                    static::class
+                    'Callback defined in %s::setPathReader must return string, %s given',
+                    static::class,
+                    is_object($path) ? get_class($path) : gettype($path)
                 ));
             }
 
