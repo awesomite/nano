@@ -19,6 +19,11 @@ trait ErrorHandlingTrait
 
     private $errorCallback = null;
 
+    /**
+     * @var bool
+     */
+    private $exitOnError;
+
     public function enableDebugMode(): self
     {
         $this->debugMode = true;
@@ -35,6 +40,7 @@ trait ErrorHandlingTrait
                 }))
                 ->exitAfterTrigger($exitOnError)
                 ->register();
+            $this->exitOnError = $exitOnError;
         }
 
         return $this;
@@ -68,6 +74,9 @@ trait ErrorHandlingTrait
             }
 
             echo 'Internal error';
+            if ($this->exitOnError) {
+                exit(1);
+            }
         }
     }
 }
