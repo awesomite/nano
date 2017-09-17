@@ -7,14 +7,14 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @internal
  */
-class DomainRoutingTest extends TestBase
+class HostRoutingTest extends TestBase
 {
     public function testGeneral()
     {
         $app = new Nano();
         $beeper = new Beeper();
         $app->get('userpage', '{{ user [^.]+ }}.home.local/', function (string $user) use ($beeper) {
-            $beeper->count();
+            $beeper->beep();
 
             return $user;
         });
