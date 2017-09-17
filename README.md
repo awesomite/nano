@@ -53,8 +53,8 @@ $app->get(['/user-{{ name }}', 'userpage'], function (string $name) {
 });
 $app->get('/menu', function (RouterInterface $router) {
     return [
-        $router->linkTo('userpage')->withParam('name', 'John'),
-        $router->linkTo('userpage')->withParam('name', 'Jane'),
+        (string)$router->linkTo('userpage')->withParam('name', 'John'),
+        (string)$router->linkTo('userpage')->withParam('name', 'Jane'),
     ];
 });
 
