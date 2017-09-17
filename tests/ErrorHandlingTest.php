@@ -44,4 +44,19 @@ class ErrorHandlingTest extends TestBase
 
         restore_error_handler();
     }
+
+    public function testWithoutDebugMode()
+    {
+        $app = new Nano();
+        $app->enableErrorHandling(false);
+
+        ob_start();
+        trigger_error('Test error');
+        $content = ob_get_contents();
+        ob_end_clean();
+
+        $this->assertSame('Internal error', $content);
+
+        restore_error_handler();
+    }
 }
