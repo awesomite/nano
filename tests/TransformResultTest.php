@@ -17,8 +17,7 @@ class TransformResultTest extends TestBase
             return [1, 2, 3];
         });
         $app->get('/stringable', function () {
-            return new class
-            {
+            return new class {
                 public function __toString()
                 {
                     return 'some text';
