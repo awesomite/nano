@@ -2,6 +2,9 @@
 
 namespace Awesomite\Nano;
 
+/**
+ * @internal
+ */
 class ErrorHandlingTest extends TestBase
 {
     public function testGeneral()

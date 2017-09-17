@@ -5,6 +5,9 @@ namespace Awesomite\Nano;
 use Awesomite\Nano\ArgumentResolver\ArgumentResolverException;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @internal
+ */
 class InvalidCallableTest extends TestBase
 {
     public function testGeneral()

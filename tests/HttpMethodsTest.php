@@ -4,6 +4,9 @@ namespace Awesomite\Nano;
 
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @internal
+ */
 class HttpMethodsTest extends TestBase
 {
     public function testGeneral()

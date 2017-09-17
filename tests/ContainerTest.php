@@ -5,6 +5,9 @@ namespace Awesomite\Nano;
 use Awesomite\Nano\Container\Container;
 use Awesomite\Nano\Container\NotFoundException;
 
+/**
+ * @internal
+ */
 class ContainerTest extends TestBase
 {
     public function testSubContainer()
