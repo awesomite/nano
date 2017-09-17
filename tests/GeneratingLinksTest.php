@@ -14,7 +14,7 @@ class GeneratingLinksTest extends TestBase
         $app = new Nano();
         $app->get(['/', 'home'], function () {
         });
-        $app->get(['/user-{{ name }}','userpage'], function () {
+        $app->get(['/user-{{ name }}', 'userpage'], function () {
         });
         $app->get(['/category/{{ id :int }}', 'showCategory'], function () {
         });

@@ -43,7 +43,8 @@ trait HttpExceptionsTrait
                         'Allows'       => $allows,
                         'Content-Type' => 'text/plain',
                     ];
-                    $bodyTemplate = <<<'TEMPLATE'
+                    $bodyTemplate
+                        = <<<'TEMPLATE'
 Method not allowed: %s %s
 Allows: %s
 TEMPLATE;

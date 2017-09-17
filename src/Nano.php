@@ -14,7 +14,6 @@ use Awesomite\Nano\Traits\ErrorHandlingTrait;
 use Awesomite\Nano\Traits\HttpExceptionsTrait;
 use Awesomite\Nano\Traits\PathReaderTrait;
 use Awesomite\Nano\Traits\RoutingTrait;
-use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
