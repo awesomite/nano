@@ -22,7 +22,7 @@ class TransformResultTest extends TestBase
             {
                 public function __toString()
                 {
-                    return 'stringable';
+                    return 'some text';
                 }
             };
         });
@@ -35,9 +35,11 @@ class TransformResultTest extends TestBase
 
         $stringableResult = $app->run(Request::create('http://home.local/stringable'), false);
         $this->assertContentTypeHtml($stringableResult);
+        $this->assertResponseBody('some text', $stringableResult);
 
         $htmlResult = $app->run(Request::create('http://home.local/html'), false);
         $this->assertContentTypeHtml($htmlResult);
+        $this->assertResponseBody('<h1>Welcome</h1>', $htmlResult);
     }
 
     private function assertContentTypeJson(Response $response)
@@ -53,5 +55,15 @@ class TransformResultTest extends TestBase
             return;
         }
         $this->assertContains('text/html', $response->headers->get('content-type'));
+    }
+
+    private function assertResponseBody(string $expected, Response $response)
+    {
+        ob_start();
+        $response->send();
+        $data = ob_get_contents();
+        ob_end_clean();
+
+        $this->assertSame($expected, $data);
     }
 }
