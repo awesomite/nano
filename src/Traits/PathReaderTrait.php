@@ -41,7 +41,7 @@ trait PathReaderTrait
         if (!is_null($this->pathReaderCallback)) {
             $path = call_user_func($this->pathReaderCallback, $request);
             if (!is_string($path)) {
-                throw new \BadMethodCallException(sprintf(
+                throw new \DomainException(sprintf(
                     'Callback defined in %s::setPathReader must return string',
                     static::class
                 ));
