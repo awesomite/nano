@@ -16,7 +16,8 @@ class TransformResultTest extends TestBase
         $app->get('/json', function () {
             return [1, 2, 3];
         });
-        $app->get('/stringable', function () {
+        $app->get('/stringable', function ()
+        {
             return new class
             {
                 public function __toString()
