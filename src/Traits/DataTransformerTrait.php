@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 /**
  * @internal
  */
-trait DataTransormerTrait
+trait DataTransformerTrait
 {
     private $defaultHttpStatusCode = Response::HTTP_OK;
 

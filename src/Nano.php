@@ -9,7 +9,7 @@ use Awesomite\Chariot\Pattern\PatternsInterface;
 use Awesomite\Nano\Container\Container;
 use Awesomite\Nano\Traits\ArgumentResolverTrait;
 use Awesomite\Nano\Traits\ContainerTrait;
-use Awesomite\Nano\Traits\DataTransormerTrait;
+use Awesomite\Nano\Traits\DataTransformerTrait;
 use Awesomite\Nano\Traits\ErrorHandlingTrait;
 use Awesomite\Nano\Traits\HttpExceptionsTrait;
 use Awesomite\Nano\Traits\PathReaderTrait;
@@ -22,7 +22,7 @@ class Nano implements AppInterface
 {
     use ArgumentResolverTrait;
     use ContainerTrait;
-    use DataTransormerTrait;
+    use DataTransformerTrait;
     use ErrorHandlingTrait;
     use HttpExceptionsTrait;
     use PathReaderTrait;
