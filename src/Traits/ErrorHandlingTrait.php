@@ -69,8 +69,10 @@ trait ErrorHandlingTrait
 
         if (!$done) {
             if (!headers_sent() && php_sapi_name() !== 'cli') {
+                // @codeCoverageIgnoreStart
                 http_response_code(Response::HTTP_SERVICE_UNAVAILABLE);
                 header('Content-Type: text/plain; charset=UTF-8');
+                // @codeCoverageIgnoreEnd
             }
 
             echo 'Internal error';
