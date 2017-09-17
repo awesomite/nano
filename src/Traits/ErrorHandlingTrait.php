@@ -62,7 +62,7 @@ trait ErrorHandlingTrait
         }
 
         if (!$done) {
-            if (!headers_sent()) {
+            if (!headers_sent() && php_sapi_name() !== 'cli') {
                 http_response_code(Response::HTTP_SERVICE_UNAVAILABLE);
                 header('Content-Type: text/plain; charset=UTF-8');
             }
