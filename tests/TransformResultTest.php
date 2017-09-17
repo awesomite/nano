@@ -27,6 +27,7 @@ class TransformResultTest extends TestBase
             };
         });
         $app->get('/html', function () {
+            return '<h1>Welcome</h1>';
         });
 
         $jsonResult = $app->run(Request::create('http://home.local/json'), false);
