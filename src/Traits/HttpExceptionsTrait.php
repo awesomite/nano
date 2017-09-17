@@ -43,11 +43,11 @@ trait HttpExceptionsTrait
                         'Allows'       => $allows,
                         'Content-Type' => 'text/plain',
                     ];
-                    $body
-                        = <<<BODY
-Method not allowed: {$request->getMethod()} {$request->getUri()}
-Allows: {$allows}
-BODY;
+                    $bodyTemplate = <<<'TEMPLATE'
+Method not allowed: %s %s
+Allows: %s
+TEMPLATE;
+                    $body = sprintf($bodyTemplate, $request->getMethod(), $request->getUri(), $allows);
 
                     return new Response($body, Response::HTTP_METHOD_NOT_ALLOWED, $headers);
                 };
