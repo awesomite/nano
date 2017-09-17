@@ -144,6 +144,10 @@ trait RoutingTrait
             return false;
         }
 
+        if (count($data) !== $count) {
+            return false;
+        }
+
         for ($i = 0; $i < $count; $i++) {
             if (!array_key_exists($i, $data)) {
                 return false;

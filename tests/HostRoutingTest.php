@@ -27,4 +27,28 @@ class HostRoutingTest extends TestBase
         $this->assertSame(1, $beeper->count());
         $this->assertSame('jane', $response->getContent());
     }
+
+    /**
+     * @dataProvider providerInvalidPath
+     *
+     * @param $path
+     */
+    public function testInvalidPath($path)
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        $app = new Nano();
+        $app->get($path, function () {
+        });
+    }
+
+    public function providerInvalidPath()
+    {
+        return [
+            [['/', 'home', 'redundant']],
+            [['a' => '/', 'b' => 'home']],
+            [false],
+            [new \stdClass()],
+        ];
+    }
 }
