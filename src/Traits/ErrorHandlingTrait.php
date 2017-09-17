@@ -77,7 +77,9 @@ trait ErrorHandlingTrait
 
             echo 'Internal error';
             if ($this->exitOnError) {
+                // @codeCoverageIgnoreStart
                 exit(1);
+                // @codeCoverageIgnoreEnd
             }
         }
     }
