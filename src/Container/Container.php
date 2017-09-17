@@ -32,7 +32,7 @@ class Container implements ContainerInterface
             return $this->data[$id] = $subContainer->get($id);
         }
 
-        throw new NotFoundException(sprintf('Not found "%"', $id));
+        throw new NotFoundException(sprintf('Not found "%s"', $id));
     }
 
     public function has($id)
