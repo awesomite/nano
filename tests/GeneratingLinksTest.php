@@ -12,11 +12,11 @@ class GeneratingLinksTest extends TestBase
     public function testGenerate()
     {
         $app = new Nano();
-        $app->get('home', '/', function () {
+        $app->get(['/', 'home'], function () {
         });
-        $app->get('userpage', '/user-{{ name }}', function () {
+        $app->get(['/user-{{ name }}','userpage'], function () {
         });
-        $app->get('showCategory', '/category/{{ id :int }}', function () {
+        $app->get(['/category/{{ id :int }}', 'showCategory'], function () {
         });
 
         $router = $app->getRouter();

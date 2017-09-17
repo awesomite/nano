@@ -10,7 +10,7 @@ class InvalidCallableTest extends TestBase
     public function testGeneral()
     {
         $app = new Nano();
-        $app->get('home', '/', function ($redis) {
+        $app->get('/', function ($redis) {
             return 'Hello!';
         });
         $this->expectException(ArgumentResolverException::class);

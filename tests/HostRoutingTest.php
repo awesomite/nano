@@ -13,7 +13,7 @@ class HostRoutingTest extends TestBase
     {
         $app = new Nano();
         $beeper = new Beeper();
-        $app->get('userpage', '{{ user [^.]+ }}.home.local/', function (string $user) use ($beeper) {
+        $app->get('{{ user [^.]+ }}.home.local/', function (string $user) use ($beeper) {
             $beeper->beep();
 
             return $user;

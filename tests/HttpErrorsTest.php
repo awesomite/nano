@@ -21,7 +21,7 @@ class HttpErrorsTest extends TestBase
     public function testDefault405()
     {
         $app = new Nano();
-        $app->get('home', '/', function () {
+        $app->get('/', function () {
         });
         $response = $app->run(Request::create('https://home.local/', 'POST'), false);
         $this->assertSame(Response::HTTP_METHOD_NOT_ALLOWED, $response->getStatusCode());
@@ -47,7 +47,7 @@ class HttpErrorsTest extends TestBase
     {
         $app = new Nano();
         $beeper = new Beeper();
-        $app->get('home', '/', function () {
+        $app->get('/', function () {
             return 'Homepage';
         });
         $app->on405(function (RouterInterface $router, Request $request) use ($beeper) {

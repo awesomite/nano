@@ -6,6 +6,7 @@
 ```php
 <?php
 
+use Awesomite\Chariot\RouterInterface;
 use Awesomite\Nano\Container\Container;
 use Awesomite\Nano\Nano;
 
@@ -34,18 +35,31 @@ $app
 /*
  * Register callbacks
  */
-$app->get('home', '/', function () {
+$app->get('/', function () {
     return 'Welcome on my website';
 });
-$app->get('greetings', '/hello-{{ name }}', function (string $name) {
+$app->get('/hello-{{ name }}', function (string $name) {
     return 'Hello ' . $name;
 });
-$app->get('showItem', '/category-{{ category }}/item-{{ itemId :int }}', function (int $itemId, string $category) {
+$app->get('/category-{{ category }}/item-{{ itemId :int }}', function (int $itemId, string $category) {
     return sprintf('Item %d from category %s', $itemId, $category);
 });
-$app->get('mysqlPing', '/mysql', function (MyMysqlConnection $mysql) { // $mysql comes from container
+$app->get('/mysql', function (MyMysqlConnection $mysql) { // $mysql comes from container
     $mysql->execute('MY QUERY...');
     return 'OK';
+});
+
+/*
+ * Named routes
+ */
+$app->get(['/user-{{ name }}', 'userpage'], function (string $name) {
+    return 'Hello, ' . $name . '!';
+});
+$app->get('/menu', function (RouterInterface $router) {
+    return [
+        $router->linkTo('userpage')->withParam('name', 'John'),
+        $router->linkTo('userpage')->withParam('name', 'Jane'),
+    ];
 });
 
 /*

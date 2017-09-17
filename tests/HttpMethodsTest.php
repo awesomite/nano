@@ -9,22 +9,22 @@ class HttpMethodsTest extends TestBase
     public function testGeneral()
     {
         $app = new Nano();
-        $app->get('get', '/', function () {
+        $app->get('/', function () {
             return 'GET';
         });
-        $app->post('post', '/', function () {
+        $app->post('/', function () {
             return 'POST';
         });
-        $app->patch('patch', '/', function () {
+        $app->patch('/', function () {
             return 'PATCH';
         });
-        $app->put('put', '/', function () {
+        $app->put('/', function () {
             return 'PUT';
         });
-        $app->delete('delete', '/', function () {
+        $app->delete('/', function () {
             return 'DELETE';
         });
-        $app->any('any', '/any', function () {
+        $app->any('/any', function () {
             return 'ANY';
         });
 

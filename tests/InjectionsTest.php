@@ -17,7 +17,6 @@ class InjectionsTest extends TestBase
             ->set('repository', 'nano');
 
         $app->get(
-            'userpage',
             '/user/{{ userName }}',
             function (string $userName, string $organization, string $repository) {
                 return sprintf('User %s, organization %s, repository %s', $userName, $organization, $repository);
@@ -38,7 +37,7 @@ class InjectionsTest extends TestBase
             return 'lazyValue';
         });
 
-        $app->get('home', '/', function ($lazyName) {
+        $app->get('/', function ($lazyName) {
             return 'home';
         });
         $this->assertSame(0, $beeper->count());
