@@ -37,7 +37,7 @@ trait HttpExceptionsTrait
         switch ($exception->getCode()) {
             case HttpException::HTTP_METHOD_NOT_ALLOWED:
                 return function (Request $request, RouterInterface $router) {
-                    $path = $request->getBaseUrl() . $request->getPathInfo();
+                    $path = $this->readPath($request);
                     $allows = implode(', ', $router->getAllowedMethods($path));
                     $headers = [
                         'Allows'       => $allows,

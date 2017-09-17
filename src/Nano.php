@@ -12,6 +12,7 @@ use Awesomite\Nano\Traits\ContainerTrait;
 use Awesomite\Nano\Traits\DataTransormerTrait;
 use Awesomite\Nano\Traits\ErrorHandlingTrait;
 use Awesomite\Nano\Traits\HttpExceptionsTrait;
+use Awesomite\Nano\Traits\PathReaderTrait;
 use Awesomite\Nano\Traits\RoutingTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,6 +25,7 @@ class Nano implements AppInterface
     use DataTransormerTrait;
     use ErrorHandlingTrait;
     use HttpExceptionsTrait;
+    use PathReaderTrait;
     use RoutingTrait;
 
     public function __construct(PatternsInterface $patterns = null, ContainerInterface $container = null)
@@ -37,7 +39,7 @@ class Nano implements AppInterface
         $request = $request ?? Request::createFromGlobals();
 
         try {
-            $route = $this->router->match($request->getMethod(), $request->getBaseUrl() . $request->getPathInfo());
+            $route = $this->router->match($request->getMethod(), $this->readPath($request));
             $handler = $this->httpHandlers[$route->getHandler()];
             $request->attributes->add($route->getParams());
             $this->defaultHttpStatusCode = Response::HTTP_OK;
